@@ -1,5 +1,9 @@
 # Codewars JavaScript Katas
 
-Hi, I am [Sjaak van den Berg](http://svdb.co/) and these are [my JavaScript exercises](http://www.codewars.com/users/sjaakvandenberg) from [Codewars](http://www.codewars.com/).
+[![CodeWars](https://www.codewars.com/users/adrianblade/badges/large)](https://www.codewars.com/users/adrianblade)
 
-For questions or suggestions, you can reach me on Twitter via [https://www.twitter.com/svdb](https://twitter.com/svdb). Have fun learning JavaScript!
+
+## My Solutions
+| kyu | Codewars Kate | My Solutions |
+| --- | --- | --- |
+| 8 | [Count the monkeys](https://www.codewars.com/kata/56f69d9f9400f508fb000ba7) | [couny_the_monkeys.js](https://github.com/adrianblade/codewars_javascript_solution/8kyu/couny_the_monkeys/couny_the_monkeys.js) |
