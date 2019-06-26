@@ -5,7 +5,6 @@ exports.addTested = function monkeyCount(n) {
   } else {
     while (n != 0) {
       arr.push(n);
-      console.log(n);
       --n;
     }
   }
