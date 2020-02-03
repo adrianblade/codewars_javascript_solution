@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/adrianblade/codewars_javascript_solution#readme",
   "devDependencies": {
+    "chai": "4.2.0",
     "mocha": "^3.5.3",
     "debug": ">=2.6.9",
     "diff": ">=3.5.0",
