@@ -18,6 +18,20 @@ describe("sample tests", function() {
  console.log("<pre>"+kingIsInCheck.printChessboard(chessboard)+"</pre>");           
  assert.equal(kingIsInCheck.addTested (chessboard),true);
   });
+
+  it("should work with a check by pawn in square", function() {
+  
+    chessboard=[[' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' '],
+                ['♟',' ',' ',' ',' ',' ',' ',' '],
+                [' ','♔',' ',' ',' ',' ',' ',' ']];
+   console.log("<pre>"+kingIsInCheck.printChessboard(chessboard)+"</pre>");           
+   assert.equal(kingIsInCheck.addTested (chessboard),true);
+    });
  
     it("should work with a check by bishop", function() {
 
