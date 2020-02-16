@@ -83,6 +83,18 @@ describe("sample tests", function() {
      console.log("<pre>"+ kingIsInCheck.printChessboard(chessboard)+"</pre>");
      assert.equal(kingIsInCheck.addTested (chessboard),true);
   });
+  it("should work with a check by rook", function() {
+    chessboard=[[' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ','♜',' ','♔',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ']]; 
+       console.log("<pre>"+ kingIsInCheck.printChessboard(chessboard)+"</pre>");
+       assert.equal(kingIsInCheck.addTested (chessboard),true);
+    });
     it("should work with a king alone", function() {
   chessboard=[[' ',' ',' ',' ',' ',' ',' ',' '],
               [' ',' ',' ',' ',' ',' ',' ',' '],
