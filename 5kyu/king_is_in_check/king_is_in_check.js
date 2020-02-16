@@ -10,10 +10,11 @@ exports.addTested = function kingIsInCheck (chessboard) {
         if (chessboard[i][j] === '♔') {
           console.log("King is localted on:" + "i: " + i +" j: " + j);
           return checkHorse(chessboard, i, j) 
-                || checkTorre(chessboard, i, j, '♜')
-                || checkAlfil(chessboard, i, j, '♝')
+                || checkHorizontalAndVertical(chessboard, i, j, '♜')
+                || checkDiagonal(chessboard, i, j, '♝')
                 || checkPeon(chessboard, i, j)
-                || checkQueen(chessboard, i, j);
+                || checkHorizontalAndVertical(chessboard, i, j, '♛') 
+                || checkDiagonal(chessboard, i, j, '♛');
         }
       }
     }
@@ -36,31 +37,27 @@ exports.addTested = function kingIsInCheck (chessboard) {
         || (chessboard[i-1] !== undefined && chessboard[i-1][j+1] === '♟');
   }
 
-  function checkQueen(chessboard, i, j) {
-    return checkTorre(chessboard, i, j, '♛') || checkAlfil(chessboard, i, j, '♛');
-  }
-
-  function checkTorre(chessboard, i, j, figure) {
+  function checkHorizontalAndVertical(chessboard, i, j, figure) {
     var check = false;
-    // Torre should be up
+    // Figure should be up
     var auxI=i;
     while (auxI > 0) {
       check = check || (chessboard[auxI-1] !== undefined && chessboard[auxI-1][j] === figure);
       auxI--;
     }
-    // Torre should be down
+    // Figure should be down
     auxI=i;
     while (auxI < 7) {
       check = check || (chessboard[auxI+1] !== undefined && chessboard[auxI+1][j] === figure);
       auxI++;
     }
-    // Torre should be left
+    // Figure should be left
     var auxJ=j;
     while (auxJ > 0) {
       check = check || (chessboard[i] !== undefined && chessboard[i][auxJ-1] === figure);
       auxJ--;
     }
-    // Torre should be right right
+    // Figure should be right right
     auxJ=j;
     while (auxJ < 7) {
       check = check || (chessboard[i] !== undefined && chessboard[i][auxJ+1] === figure);
@@ -69,9 +66,9 @@ exports.addTested = function kingIsInCheck (chessboard) {
     return check;
   }
 
-  function checkAlfil(chessboard, i, j, figure) {
+  function checkDiagonal(chessboard, i, j, figure) {
     var check = false;
-    // Alfil should be left up
+    // Figure should be left up
     var auxI=i;
     var auxJ=j;
     while (auxI > 0 || auxJ > 0) {
@@ -79,7 +76,7 @@ exports.addTested = function kingIsInCheck (chessboard) {
       auxI--;
       auxJ--;
     }
-    // Alfil should be left down
+    // Figure should be left down
     auxI=i;
     auxJ=j;
     while (auxI < 7 || auxJ > 0) {
@@ -87,7 +84,7 @@ exports.addTested = function kingIsInCheck (chessboard) {
       auxI++;
       auxJ--;
     }
-    // Alfil should be right up
+    // Figure should be right up
     auxI=i;
     auxJ=j;
     while (auxI> 0 || auxJ < 7) {
@@ -95,7 +92,7 @@ exports.addTested = function kingIsInCheck (chessboard) {
       auxI--;
       auxJ++;
     }
-    // Alfil should be right down
+    // Figure should be right down
     auxI=i;
     auxJ=j;
     while (auxI < 7 || auxJ < 7) {
