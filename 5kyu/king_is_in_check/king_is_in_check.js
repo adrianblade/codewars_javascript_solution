@@ -1,8 +1,3 @@
-var bishopThreats = [true,  false,  true,   false,  false,  true,   false,  true]; // ALFIL
-var rookThreats =   [false, true,   false,  true,   true,   false,  true,   false]; // TORRE
-var queenThreats =  [true,  true,   true,   true,   true,   true,   true,   true];
-var kingThreats =   [true,  true,   true,   true,   true,   true,   true,   true];
-
 exports.addTested = function kingIsInCheck (chessboard) {
     for(var i = 0; i < chessboard.length; i++) {
       var line = chessboard[i];
@@ -12,7 +7,7 @@ exports.addTested = function kingIsInCheck (chessboard) {
           return checkHorse(chessboard, i, j) 
                 || checkHorizontalAndVertical(chessboard, i, j, '♜')
                 || checkDiagonal(chessboard, i, j, '♝')
-                || checkPeon(chessboard, i, j)
+                || checkPawn(chessboard, i, j)
                 || checkHorizontalAndVertical(chessboard, i, j, '♛') 
                 || checkDiagonal(chessboard, i, j, '♛');
         }
@@ -32,7 +27,7 @@ exports.addTested = function kingIsInCheck (chessboard) {
         || (chessboard[i+2] !== undefined && chessboard[i+2][j-1] === '♞');
   }
 
-  function checkPeon(chessboard, i, j) {
+  function checkPawn(chessboard, i, j) {
     return (chessboard[i-1] !== undefined && chessboard[i-1][j-1] === '♟')
         || (chessboard[i-1] !== undefined && chessboard[i-1][j+1] === '♟');
   }
@@ -42,25 +37,53 @@ exports.addTested = function kingIsInCheck (chessboard) {
     // Figure should be up
     var auxI=i;
     while (auxI > 0) {
-      check = check || (chessboard[auxI-1] !== undefined && chessboard[auxI-1][j] === figure);
+      if (chessboard[auxI] !== undefined) {
+        let figureInChess =  chessboard[auxI-1][j];
+        if (figureInChess === figure){
+          check = check || true;
+        } else {
+          if (figureInChess !== ' ') {break;}
+        }
+      }
       auxI--;
     }
     // Figure should be down
     auxI=i;
     while (auxI < 7) {
-      check = check || (chessboard[auxI+1] !== undefined && chessboard[auxI+1][j] === figure);
+      if (chessboard[auxI] !== undefined) {
+        let figureInChess =  chessboard[auxI+1][j];
+        if (figureInChess === figure){
+          check = check || true;
+        } else {
+          if (figureInChess !== ' ') {break;}
+        }
+      }
       auxI++;
     }
     // Figure should be left
     var auxJ=j;
     while (auxJ > 0) {
-      check = check || (chessboard[i] !== undefined && chessboard[i][auxJ-1] === figure);
+      if (chessboard[i] !== undefined) {
+        let figureInChess = chessboard[i][auxJ-1];
+        if (figureInChess === figure){
+          check = check || true;
+        } else {
+          if (figureInChess !== ' ') {break;}
+        }
+      }
       auxJ--;
     }
     // Figure should be right right
     auxJ=j;
     while (auxJ < 7) {
-      check = check || (chessboard[i] !== undefined && chessboard[i][auxJ+1] === figure);
+      if (chessboard[i] !== undefined) {
+        let figureInChess = chessboard[i][auxJ+1];
+        if (figureInChess === figure){
+          check = check || true;
+        } else {
+          if (figureInChess !== ' ') {break;}
+        }
+      }
       auxJ++;
     }
     return check;
@@ -72,7 +95,14 @@ exports.addTested = function kingIsInCheck (chessboard) {
     var auxI=i;
     var auxJ=j;
     while (auxI > 0 || auxJ > 0) {
-      check = check || (chessboard[auxI-1] !== undefined && chessboard[auxI-1][auxJ-1] === figure);
+      if (chessboard[auxI-1] !== undefined) {
+        let figureInChess = chessboard[auxI-1][auxJ-1];
+        if (figureInChess === figure) {
+          check = check || true;
+        } else {
+          if (figureInChess !== ' ') {break;}
+        }
+      }
       auxI--;
       auxJ--;
     }
@@ -80,7 +110,14 @@ exports.addTested = function kingIsInCheck (chessboard) {
     auxI=i;
     auxJ=j;
     while (auxI < 7 || auxJ > 0) {
-      check = check || (chessboard[auxI+1] !== undefined && chessboard[auxI+1][auxJ-1] === figure);
+      if (chessboard[auxI+1] !== undefined) {
+        let figureInChess = chessboard[auxI+1][auxJ-1];
+        if (figureInChess === figure) {
+          check = check || true;
+        } else {
+          if (figureInChess !== ' ') {break;}
+        }
+      }
       auxI++;
       auxJ--;
     }
@@ -88,7 +125,14 @@ exports.addTested = function kingIsInCheck (chessboard) {
     auxI=i;
     auxJ=j;
     while (auxI> 0 || auxJ < 7) {
-      check = check || (chessboard[auxI-1] !== undefined && chessboard[auxI-1][auxJ+1] === figure);
+      if (chessboard[auxI-1] !== undefined) {
+        let figureInChess = chessboard[auxI-1][auxJ+1];
+        if (figureInChess === figure) {
+          check = check || true;
+        } else {
+          if (figureInChess !== ' ') {break;}
+        }
+      }
       auxI--;
       auxJ++;
     }
@@ -96,7 +140,14 @@ exports.addTested = function kingIsInCheck (chessboard) {
     auxI=i;
     auxJ=j;
     while (auxI < 7 || auxJ < 7) {
-      check = check || (chessboard[auxI+1] !== undefined && chessboard[auxI+1][auxJ+1] === figure);
+      if (chessboard[auxI+1] !== undefined) {
+        let figureInChess = chessboard[auxI+1][auxJ+1];
+        if (figureInChess === figure) {
+          check = check || true;
+        } else {
+          if (figureInChess !== ' ') {break;}
+        }
+      }
       auxI++;
       auxJ++;
     }
